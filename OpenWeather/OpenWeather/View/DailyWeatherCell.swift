@@ -14,7 +14,8 @@ class DailyWeatherCell: UICollectionViewCell {
     didSet {
       if let weather = self.weather {
         dayNameLabel.text = DateFormatter.dayNameFrom(timeIntervalSince1970: TimeInterval(weather.dt))
-        dayTemp.text = "\(weather.temp.day)°C"
+        dayTemp.text = OpenWeatherMapModel.degreeAccordingToType(value: weather.temp.day)
+        nightTemp.text = OpenWeatherMapModel.degreeAccordingToType(value: weather.temp.night)
         guard let status = weather.weather.first else { return }
         weatherStatusImage.image = UIImage(named: status.icon)
         weatherStatusLabel.text = "\(status.main)"
@@ -24,11 +25,11 @@ class DailyWeatherCell: UICollectionViewCell {
   
   let dayNameLabel = UILabel(text: "Friday", font: .boldSystemFont(ofSize: 24))
   let weatherStatusImage = UIImageView(image: #imageLiteral(resourceName: "01d"), contentMode: .scaleAspectFit)
-  let weatherStatusLabel = UILabel(text: "Cloudly", font: .systemFont(ofSize: 18))
+  let weatherStatusLabel = UILabel(text: "Cloudly", font: .systemFont(ofSize: 20))
   let dayImage = UIImageView(image: #imageLiteral(resourceName: "01d"), contentMode: .scaleAspectFit)
-  let dayTemp = UILabel(text: "16°C", font: .systemFont(ofSize: 18))
+  let dayTemp = UILabel(text: "16°C", font: .systemFont(ofSize: 20))
   let nightImage = UIImageView(image: #imageLiteral(resourceName: "01n"), contentMode: .scaleAspectFit)
-  let nightTemp = UILabel(text: "16°C", font: .systemFont(ofSize: 18))
+  let nightTemp = UILabel(text: "16°C", font: .systemFont(ofSize: 20))
   
   override init(frame: CGRect) {
     super.init(frame: frame)

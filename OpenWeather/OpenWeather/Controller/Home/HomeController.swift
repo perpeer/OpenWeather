@@ -45,10 +45,45 @@ class HomeController: BaseListController {
     collectionView.backgroundColor = .white
     collectionView.register(DailyWeatherCell.self, forCellWithReuseIdentifier: dailyWeatherCellId)
     collectionView.register(DailyWeatherHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: dailyWeatherHeaderCell)
-    
+    collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
+
     weatherDataFetchWith(cityName: "ankara")
     
     setupNavControllerLayout()
+    setupBottomToolbar()
+  }
+  
+  fileprivate func setupBottomToolbar() {
+    let toolbarView = UIView()
+    toolbarView.backgroundColor = UIColor.rgb(red: 241, green: 196, blue: 15)
+    view.addSubview(toolbarView)
+    toolbarView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, size: .init(width: 0, height: 80))
+    let fahrenheitLabel = UILabel(text: "°F", font: .boldSystemFont(ofSize: 22))
+    let celsiusLabel = UILabel(text: "°C", font: .boldSystemFont(ofSize: 22))
+    celsiusLabel.textAlignment = .right
+    let switchButton = UISwitch()
+    
+    toolbarView.addSubview(switchButton)
+    switchButton.anchor(top: nil, leading: nil, bottom: nil, trailing: nil)
+    switchButton.centerXAnchor.constraint(equalTo: toolbarView.centerXAnchor).isActive = true
+    switchButton.centerYAnchor.constraint(equalTo: toolbarView.centerYAnchor).isActive = true
+    
+    toolbarView.addSubview(celsiusLabel)
+    celsiusLabel.anchor(top: toolbarView.topAnchor, leading: toolbarView.leadingAnchor, bottom: toolbarView.bottomAnchor, trailing: switchButton.leadingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 8))
+    
+    toolbarView.addSubview(fahrenheitLabel)
+    fahrenheitLabel.anchor(top: toolbarView.topAnchor, leading: switchButton.trailingAnchor, bottom: toolbarView.bottomAnchor, trailing: toolbarView.trailingAnchor, padding: .init(top: 0, left: 8, bottom: 0, right: 0))
+    switchButton.addTarget(self, action: #selector(handleDegreeSwitchButton), for: .valueChanged)
+  }
+  
+  @objc func handleDegreeSwitchButton(_ sender: UISwitch!) {
+    print(sender.isOn)
+    if sender.isOn {
+      Constants.DegreeTypeValue = .Fahrenheit
+    } else {
+      Constants.DegreeTypeValue = .Celsius
+    }
+    collectionView.reloadData()
   }
   
   fileprivate func setupNavControllerLayout() {

@@ -16,7 +16,6 @@
 		EABB06732386DBE800A80537 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EABB06712386DBE800A80537 /* Main.storyboard */; };
 		EABB06752386DBE900A80537 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EABB06742386DBE900A80537 /* Assets.xcassets */; };
 		EABB06782386DBE900A80537 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EABB06762386DBE900A80537 /* LaunchScreen.storyboard */; };
-		EABB068D2386DC4500A80537 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABB06862386DC4400A80537 /* Constant.swift */; };
 		EABB068E2386DC4500A80537 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABB06872386DC4400A80537 /* UIColor+Extension.swift */; };
 		EABB068F2386DC4500A80537 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABB06882386DC4400A80537 /* UIView+Layout.swift */; };
 		EABB06932386DC4500A80537 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABB068C2386DC4500A80537 /* UILabel+Extension.swift */; };
@@ -45,7 +44,6 @@
 		EABB06742386DBE900A80537 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EABB06772386DBE900A80537 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EABB06792386DBE900A80537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EABB06862386DC4400A80537 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		EABB06872386DC4400A80537 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		EABB06882386DC4400A80537 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		EABB068C2386DC4500A80537 /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 		EABB06852386DC3B00A80537 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				EABB06862386DC4400A80537 /* Constant.swift */,
 				EABB06872386DC4400A80537 /* UIColor+Extension.swift */,
 				EABB068C2386DC4500A80537 /* UILabel+Extension.swift */,
 				EABB06882386DC4400A80537 /* UIView+Layout.swift */,
@@ -341,7 +338,6 @@
 				EABB06A323870FAF00A80537 /* Service.swift in Sources */,
 				EABB066E2386DBE800A80537 /* SceneDelegate.swift in Sources */,
 				EA9F8F232387C49A005BD5B1 /* DateFormatter+Extension.swift in Sources */,
-				EABB068D2386DC4500A80537 /* Constant.swift in Sources */,
 				EABB06972386DCAB00A80537 /* BaseListController.swift in Sources */,
 				EABB068E2386DC4500A80537 /* UIColor+Extension.swift in Sources */,
 				EABB06A623870FEC00A80537 /* Constants.swift in Sources */,

@@ -12,7 +12,7 @@ class Service {
   static let shared = Service()
   
   func fetchDataFrom(cityName: String, completionHandler: @escaping (OpenWeatherMapModel?, Error?) -> Void) {
-    let urlString = "http://api.openweathermap.org/data/2.5/forecast/daily?q=\(cityName)&units=metric&cnt=7&appid=\(Constants.OpenWeatherAPIKey)"
+    let urlString = "http://api.openweathermap.org/data/2.5/forecast/daily?q=\(cityName)&units=metric&cnt=\(Constants.OpenWeatherQueryCount)&appid=\(Constants.OpenWeatherAPIKey)"
     if let urlStr = urlString.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) {
       let url = URL(string: urlStr)
       URLSession.shared.dataTask(with: url!) { (data, resp, err) in

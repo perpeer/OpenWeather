@@ -20,7 +20,7 @@ class DailyWeatherHeaderCell: UICollectionViewCell {
   var weather: DailyWeather? {
     didSet {
       if let weather = self.weather {
-        tempLabel.text = "\(weather.temp.day)°C"
+        tempLabel.text = OpenWeatherMapModel.degreeAccordingToType(value: weather.temp.day)
         humidityLabel.text = "%\(weather.humidity)"
         guard let status = weather.weather.first else { return }
         weatherStatusImage.image = UIImage(named: status.icon)
