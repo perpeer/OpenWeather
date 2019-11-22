@@ -18,9 +18,9 @@ class SearchPlaceController: UIViewController {
   // Searchbar Views
   let subView = UIView()
   
-  // GooglePlaceChangable delagate
+  // GooglePlaceChangable delegate
   var delegate: GooglePlaceChangable?
-  
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
@@ -28,10 +28,9 @@ class SearchPlaceController: UIViewController {
     // google api delegate
     resultsViewController = GMSAutocompleteResultsViewController()
     resultsViewController?.delegate = self
-    
     setupSearchBar()
   }
-  
+
   fileprivate func setupSearchBar() {
     searchController = UISearchController(searchResultsController: resultsViewController)
     searchController?.searchResultsUpdater = resultsViewController
@@ -42,38 +41,23 @@ class SearchPlaceController: UIViewController {
     subView.addSubview((searchController?.searchBar)!)
     searchController?.searchBar.sizeToFit()
     searchController?.hidesNavigationBarDuringPresentation = false
-    
-    // When UISearchController presents the results view, present it in
-    // this view controller, not one further up the chain.
     definesPresentationContext = true
   }
 }
 
-// Handle the user's selection.
 extension SearchPlaceController: GMSAutocompleteResultsViewControllerDelegate {
   func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                          didAutocompleteWith place: GMSPlace) {
     searchController?.isActive = false
-    // Do something with the selected place.
-    print("Place name: \(String(describing: place.name))")
-    print("Place address: \(String(describing: place.formattedAddress))")
-    print("Place coordinate: \(String(describing: place.coordinate))")
+//    print("Place name: \(String(describing: place.name))")
+//    print("Place address: \(String(describing: place.formattedAddress))")
+//    print("Place coordinate: \(String(describing: place.coordinate))")
     delegate?.change(place: place)
     dismiss(animated: true, completion: nil)
   }
   
   func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                          didFailAutocompleteWithError error: Error){
-    // TODO: handle the error.
     print("Error: ", error.localizedDescription)
-  }
-  
-  // Turn the network activity indicator on and off again.
-  func didRequestAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
-//    UIApplication.shared.isNetworkActivityIndicatorVisible = true
-  }
-  
-  func didUpdateAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
-//    UIApplication.shared.isNetworkActivityIndicatorVisible = false
   }
 }
