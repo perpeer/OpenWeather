@@ -42,6 +42,11 @@ extension SearchPlaceController {
     resultsViewController?.primaryTextColor = .black
     resultsViewController?.primaryTextHighlightColor = .blue
     resultsViewController?.secondaryTextColor = .black
+    
+    // filtered citiest and countries
+    let filter = GMSAutocompleteFilter()
+    filter.type = .city
+    resultsViewController?.autocompleteFilter = filter
   }
   
   fileprivate func setupSearchBar() {
