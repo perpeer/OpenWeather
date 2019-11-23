@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Set the Google Place API's autocomplete UI control
     GMSPlacesClient.provideAPIKey(Constants.GooglePlaceAPIKey)
  
-    guard let _ = (scene as? UIWindowScene) else { return }
+    guard let _ = (scene as? UIWindowScene) else { return }    
     let homeNavController = UINavigationController(rootViewController: HomeController())
     window?.rootViewController = homeNavController
   }
