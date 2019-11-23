@@ -122,7 +122,8 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: dailyWeatherCellId, for: indexPath) as! DailyWeatherCell
-    if let weather = self.weather?.list?[min(indexPath.item + 1, Constants.OpenWeatherQueryCount)] {
+    let index = min(indexPath.item + 1, Constants.OpenWeatherQueryCount)
+    if let weather = self.weather?.list?[index] {
       cell.weather = weather
     }
     return cell

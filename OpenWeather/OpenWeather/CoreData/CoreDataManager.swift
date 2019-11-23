@@ -11,6 +11,16 @@ import CoreData
 class CoreDataManager {
   static let shared = CoreDataManager()
   
+  let persistentContainer: NSPersistentContainer = {
+    let persistentContainer = NSPersistentContainer(name: "OpenWeatherDataModel")
+    persistentContainer.loadPersistentStores { (storeDescription, error) in
+      if let err = error {
+        fatalError("Loading of store failed: \(err)")
+      }
+    }
+    return persistentContainer
+  }()
+  
   var cityName: String {
     get {
       if let cityName = fetchPreferences()?.cityName {
@@ -43,17 +53,7 @@ class CoreDataManager {
     case CityName = "cityName"
     case DegreeType = "degreeType"
   }
-  
-  let persistentContainer: NSPersistentContainer = {
-    let persistentContainer = NSPersistentContainer(name: "OpenWeatherDataModel")
-    persistentContainer.loadPersistentStores { (storeDescription, error) in
-      if let err = error {
-        fatalError("Loading of store failed: \(err)")
-      }
-    }
-    return persistentContainer
-  }()
-  
+
   fileprivate func fetchPreferences() -> Preferences? {
     let context = persistentContainer.viewContext
     let fetchRequest = NSFetchRequest<Preferences>(entityName: "Preferences")

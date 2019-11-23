@@ -30,7 +30,7 @@ class DailyWeatherHeaderCell: UICollectionViewCell {
   }
   
   let cityNameLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 48))
-  let weatherStatusImage = UIImageView(image: #imageLiteral(resourceName: "01d"), contentMode: .scaleAspectFill)
+  let weatherStatusImage = UIImageView(image: UIImage(), contentMode: .scaleAspectFill)
   let weatherStatusLabel = UILabel(text: "", font: .systemFont(ofSize: 24))
   let tempLabel = UILabel(text: "", font: .systemFont(ofSize: 32))
   let humidityLabel = UILabel(text: "", font: .systemFont(ofSize: 32))

@@ -15,12 +15,11 @@ struct Constants {
   static let OpenWeatherQueryCount = 8
   
   // default constants of preferences
-  static var CityName = "Ankara"
-  static var DegreeStatus = DegreeType.Celsius
+  static let CityName = "Ankara"
+  static let DegreeStatus = DegreeType.Celsius
 }
 
 enum DegreeType: String {
   case Fahrenheit = "F"
-  
   case Celsius = "C"
 }
