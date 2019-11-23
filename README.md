@@ -3,7 +3,7 @@ This application developed without using a storyboard. The first window starts b
 
 ## Screenshots
 |      Screen       | Main Screen       | 
-|-------------------|------------------:|
+|:------------------|------------------:|
 |    ![screen][]    | ![main-screen][]  |
 
 ## Sample of api url
