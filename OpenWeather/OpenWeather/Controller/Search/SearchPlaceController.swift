@@ -25,12 +25,20 @@ class SearchPlaceController: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .white
     
+    setupResultsController()
+    setupSearchBar()
+  }
+  
+}
+
+// Layout
+extension SearchPlaceController {
+  fileprivate func setupResultsController() {
     // google api delegate
     resultsViewController = GMSAutocompleteResultsViewController()
     resultsViewController?.delegate = self
-    setupSearchBar()
   }
-
+  
   fileprivate func setupSearchBar() {
     searchController = UISearchController(searchResultsController: resultsViewController)
     searchController?.searchResultsUpdater = resultsViewController
@@ -49,9 +57,6 @@ extension SearchPlaceController: GMSAutocompleteResultsViewControllerDelegate {
   func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                          didAutocompleteWith place: GMSPlace) {
     searchController?.isActive = false
-//    print("Place name: \(String(describing: place.name))")
-//    print("Place address: \(String(describing: place.formattedAddress))")
-//    print("Place coordinate: \(String(describing: place.coordinate))")
     delegate?.change(place: place)
     dismiss(animated: true, completion: nil)
   }

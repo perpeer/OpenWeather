@@ -29,11 +29,11 @@ class DailyWeatherHeaderCell: UICollectionViewCell {
     }
   }
   
-  let cityNameLabel = UILabel(text: "London", font: .boldSystemFont(ofSize: 48))
+  let cityNameLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 48))
   let weatherStatusImage = UIImageView(image: #imageLiteral(resourceName: "01d"), contentMode: .scaleAspectFill)
-  let weatherStatusLabel = UILabel(text: "Cloudly", font: .systemFont(ofSize: 24))
-  let tempLabel = UILabel(text: "23°C", font: .systemFont(ofSize: 32))
-  let humidityLabel = UILabel(text: "%20", font: .systemFont(ofSize: 32))
+  let weatherStatusLabel = UILabel(text: "", font: .systemFont(ofSize: 24))
+  let tempLabel = UILabel(text: "", font: .systemFont(ofSize: 32))
+  let humidityLabel = UILabel(text: "", font: .systemFont(ofSize: 32))
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -44,9 +44,7 @@ class DailyWeatherHeaderCell: UICollectionViewCell {
   fileprivate func setupLayout() {
     let weatherStatusContainer = UIStackView(arrangedSubviews: [
       weatherStatusImage, weatherStatusLabel
-    ])
-    weatherStatusContainer.axis = .vertical
-    weatherStatusContainer.alignment = .center
+    ], axis: .vertical, alignment: .center)
     
     let topContainer = UIStackView(arrangedSubviews: [
       cityNameLabel, weatherStatusContainer

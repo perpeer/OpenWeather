@@ -10,9 +10,9 @@ import Foundation
 
 extension OpenWeatherMapModel {
   static func degreeAccordingToType(value: Double) -> String {
-    switch Constants.DegreeTypeValue {
-    case .Celsius: return "\(String(format: "%.1f", value))\(Constants.DegreeType.Celsius.rawValue)"
-    case .Fahrenheit: return "\(String(format: "%.1f", (value * 1.8) + 32))\(Constants.DegreeType.Fahrenheit.rawValue)"
+    switch CoreDataManager.shared.degreeType {
+    case .Celsius: return "\(String(format: "%.1f", value))°\(DegreeType.Celsius.rawValue)"
+    case .Fahrenheit: return "\(String(format: "%.1f", (value * 1.8) + 32))°\(DegreeType.Fahrenheit.rawValue)"
     }
   }
 }

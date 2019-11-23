@@ -13,10 +13,13 @@ struct Constants {
   static let OpenWeatherAPIKey = "6965e79f1e772ad83f14a636fcf7cbf9"
   // max query count is 18 and default 7
   static let OpenWeatherQueryCount = 7
-  static var DegreeTypeValue = DegreeType.Celsius
   
-  enum DegreeType: String {
-    case Fahrenheit = "°F"
-    case Celsius = "°C"
-  }
+  // default constants of preferences
+  static var CityName = "Ankara"
+  static var DegreeStatus = DegreeType.Celsius
+}
+
+enum DegreeType: String {
+  case Fahrenheit = "F"
+  case Celsius = "C"
 }

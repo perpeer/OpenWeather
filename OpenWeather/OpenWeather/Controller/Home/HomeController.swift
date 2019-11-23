@@ -42,15 +42,27 @@ class HomeController: BaseListController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    collectionView.backgroundColor = .white
-    collectionView.register(DailyWeatherCell.self, forCellWithReuseIdentifier: dailyWeatherCellId)
-    collectionView.register(DailyWeatherHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: dailyWeatherHeaderCell)
-    collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
-
-    weatherDataFetchWith(cityName: "ankara")
-    
+    if let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path {
+        print("Documents Directory: \(documentsPath)")
+    }
+    checkCityNameAndFetcData()
+    collectionViewLayout()
     setupNavControllerLayout()
     setupBottomToolbar()
+  }
+}
+
+// Layout
+extension HomeController {
+  fileprivate func checkCityNameAndFetcData() {
+    weatherDataFetchWith(cityName: CoreDataManager.shared.cityName)
+  }
+  
+  fileprivate func collectionViewLayout() {
+      collectionView.backgroundColor = .white
+      collectionView.register(DailyWeatherCell.self, forCellWithReuseIdentifier: dailyWeatherCellId)
+      collectionView.register(DailyWeatherHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: dailyWeatherHeaderCell)
+      collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
   }
   
   fileprivate func setupBottomToolbar() {
@@ -74,20 +86,28 @@ class HomeController: BaseListController {
     toolbarView.addSubview(fahrenheitLabel)
     fahrenheitLabel.anchor(top: toolbarView.topAnchor, leading: switchButton.trailingAnchor, bottom: toolbarView.bottomAnchor, trailing: toolbarView.trailingAnchor, padding: .init(top: 0, left: 8, bottom: 0, right: 0))
     switchButton.addTarget(self, action: #selector(handleDegreeSwitchButton), for: .valueChanged)
-  }
-  
-  @objc func handleDegreeSwitchButton(_ sender: UISwitch!) {
-    print(sender.isOn)
-    if sender.isOn {
-      Constants.DegreeTypeValue = .Fahrenheit
-    } else {
-      Constants.DegreeTypeValue = .Celsius
+    
+    switch CoreDataManager.shared.degreeType {
+    case .Celsius: switchButton.isOn = false
+    case .Fahrenheit: switchButton.isOn = true
     }
-    collectionView.reloadData()
   }
-  
+
   fileprivate func setupNavControllerLayout() {
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleNavRightButton))
+  }
+}
+
+// Handle
+extension HomeController {
+  @objc func handleDegreeSwitchButton(_ sender: UISwitch!) {
+    if sender.isOn {
+      CoreDataManager.shared.degreeType = .Fahrenheit
+      collectionView.reloadData()
+    } else {
+      CoreDataManager.shared.degreeType = .Celsius
+      collectionView.reloadData()
+    }
   }
   
   @objc func handleNavRightButton() {
@@ -145,5 +165,8 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
 extension HomeController: GooglePlaceChangable {
   func change(place: GMSPlace) {
     self.place = place
+    if let cityName = self.place?.name {
+      CoreDataManager.shared.cityName = cityName
+    }
   }
 }
