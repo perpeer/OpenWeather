@@ -2,9 +2,9 @@
 This application developed without using a storyboard. The first window starts by AppDelegate window property. All api request runs with Service singleton pattern.
 
 ## Screenshots
-|      Screen      | Main Screen      |       Cell         | 
-|:-----------------|:-----------------|-------------------:|
-|    ![screen][]   | ![main-screen][] |  ![cell][]         |
+|      Screen      | Main Screen     |       Cell         | 
+|:-----------------|-----------------|-------------------:|
+|    ![screen][]   | ![main-screen][]|  ![cell][]         |
 
 ## Sample of api url
 - **Weather json url**: 
