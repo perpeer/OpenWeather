@@ -42,10 +42,7 @@ class HomeController: BaseListController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    if let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path {
-        print("Documents Directory: \(documentsPath)")
-    }
-    checkCityNameAndFetcData()
+    fetchData()
     collectionViewLayout()
     setupNavControllerLayout()
     setupBottomToolbar()
@@ -54,7 +51,7 @@ class HomeController: BaseListController {
 
 // Layout
 extension HomeController {
-  fileprivate func checkCityNameAndFetcData() {
+  fileprivate func fetchData() {
     weatherDataFetchWith(cityName: CoreDataManager.shared.cityName)
   }
   

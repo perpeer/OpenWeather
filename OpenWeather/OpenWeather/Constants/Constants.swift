@@ -21,5 +21,6 @@ struct Constants {
 
 enum DegreeType: String {
   case Fahrenheit = "F"
+  
   case Celsius = "C"
 }

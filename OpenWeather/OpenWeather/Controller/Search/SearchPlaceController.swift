@@ -37,6 +37,11 @@ extension SearchPlaceController {
     // google api delegate
     resultsViewController = GMSAutocompleteResultsViewController()
     resultsViewController?.delegate = self
+    resultsViewController?.tableCellBackgroundColor = .white
+    resultsViewController?.tableCellSeparatorColor = .black
+    resultsViewController?.primaryTextColor = .black
+    resultsViewController?.primaryTextHighlightColor = .blue
+    resultsViewController?.secondaryTextColor = .black
   }
   
   fileprivate func setupSearchBar() {
