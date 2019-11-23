@@ -120,12 +120,12 @@ extension HomeController {
 // General UICollectionViewDelegateFlowLayout
 extension HomeController: UICollectionViewDelegateFlowLayout {
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return weather?.list?.count ?? 0
+    return (weather?.list?.count ?? 1) - 1
   }
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: dailyWeatherCellId, for: indexPath) as! DailyWeatherCell
-    if let weather = self.weather?.list?[indexPath.item] {
+    if let weather = self.weather?.list?[min(indexPath.item + 1, Constants.OpenWeatherQueryCount)] {
       cell.weather = weather
     }
     return cell

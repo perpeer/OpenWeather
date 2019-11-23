@@ -11,8 +11,8 @@ import Foundation
 struct Constants {
   static let GooglePlaceAPIKey = "AIzaSyBHa2dO8r2xC-06zvaGwBFkphCb9kQgvDs"
   static let OpenWeatherAPIKey = "6965e79f1e772ad83f14a636fcf7cbf9"
-  // max query count is 18 and default 7
-  static let OpenWeatherQueryCount = 7
+  // max query count is 18 and default 8
+  static let OpenWeatherQueryCount = 8
   
   // default constants of preferences
   static var CityName = "Ankara"
